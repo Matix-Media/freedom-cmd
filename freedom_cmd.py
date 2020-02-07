@@ -5,7 +5,6 @@ import datetime
 import platform
 import os.path
 import subprocess
-import ntpath
 import requests
 
 
@@ -14,7 +13,7 @@ class Commands():
         self.platform = platform.system()
         self.plt_rls = platform.release()
 
-    def cmd_check_for_observers(self):
+    def cmd_check_for_observers(self, *args):
         observers = []
         observers_settings = {}
 
@@ -53,9 +52,10 @@ class Commands():
         if observers_settings["write_to_output"]:
             print("Done. Writing to output file ('{0}')...".format(observers_settings["output_file"]))
             try:
-                with open(observers_settings["output_file"], "w") as f:
+                with open(observers_settings["output_file"], "a+") as f:
                     for act_obs in active_observers:
                         f.write(act_obs["detection_time"] + " ::: " + act_obs["name"] + " ::: " + str(act_obs["ID"]) + "\n")
+                print("Done.")
             except OSError:
                 print("Error writing output file. Continuing")
         else:
@@ -69,7 +69,7 @@ class Commands():
         else:
             print("No possible observers found.")
 
-    def cmd_start_tor(self):
+    def cmd_start_tor(self, *args):
         # Read settings
         tor_settings = {}
         print("Reading tor settings...")
@@ -181,10 +181,39 @@ class Commands():
         # Run
         check_for_tor()
 
+    def cmd_help(self):
+        print("HELP")
+        print("  check_for_observers  :: Checks for process witch could observe you.")
+        print("  start_tor            :: Installs and starts the tor browser.")
+        print("  help                 :: Lists all commands.")
+
+# Read general settings
+
+general_settings = {}
+try:
+    with open('settings.json') as json_file:
+        tmp_json = json.load(json_file)
+        general_settings = tmp_json["settings"]["general"]
+except OSError:
+    print("Error reading settings. Exiting...")
+    exit(1)
+
+# ASCII HEADER
+print("""
+ ( ͡° ͜ʖ ͡°)
+  ______ _____  ______ ______ _____   ____  __  __         _____ __  __ _____  
+ |  ____|  __ \|  ____|  ____|  __ \ / __ \|  \/  |       / ____|  \/  |  __ \ 
+ | |__  | |__) | |__  | |__  | |  | | |  | | \  / |______| |    | \  / | |  | |
+ |  __| |  _  /|  __| |  __| | |  | | |  | | |\/| |______| |    | |\/| | |  | |
+ | |    | | \ \| |____| |____| |__| | |__| | |  | |      | |____| |  | | |__| |
+ |_|    |_|  \_\______|______|_____/ \____/|_|  |_|       \_____|_|  |_|_____/  v%s
+ The open-source workspace freedom tool.
+ ----------------------------------------------------------------------------------
+""" % general_settings["version"])
 
 # Command control
 cmd = Commands()
-commands = {"check_for_observers": cmd.cmd_check_for_observers, "start_tor": cmd.cmd_start_tor}
+commands = {"help": cmd.cmd_help, "check_for_observers": cmd.cmd_check_for_observers, "start_tor": cmd.cmd_start_tor}
 
 if len(sys.argv) > 1:
     if sys.argv[1] in commands:
