@@ -1,0 +1,28 @@
+{
+  "_comment": "PLEASE DO NOT MODIFY THIS FILE IF YOU DON'T KNOW WHAT YOU ARE DOING!",
+  "settings": {
+    "check_for_observers": {
+      "write_to_output": true,
+      "output_file": "observers.log"
+    },
+    "tor": {
+      "installation-path": "./data/tor/installations/",
+      "installer-path": "./data/tor/installers/",
+      "run_instlr_silent": true,
+      "installer-urls": {
+        "Windows": "https://dist.torproject.org/torbrowser/9.5a4/torbrowser-install-9.5a4_en-US.exe",
+        "Linux": "https://dist.torproject.org/torbrowser/9.5a4/tor-browser-linux32-9.5a4_en-US.tar.xz",
+        "Darwin": "https://dist.torproject.org/torbrowser/9.5a4/TorBrowser-9.5a4-osx64_en-US.dmg"
+      }
+    }
+  },
+  "observers": [
+      "veyon_worker.exe",
+      "iTalc.exe",
+      "amsys32.exe",
+      "teamviewer.exe",
+      "scthost.exe",
+      "trmhost.exe",
+      "TeamViewer_Service.exe"
+    ]
+}
