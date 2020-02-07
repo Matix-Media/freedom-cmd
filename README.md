@@ -1,4 +1,4 @@
-# FREEDOM-Commander (v0.2)
+# FREEDOM-Commander (v0.2.2)
 A tool that you can use to protect your privacy at work in the office or at school.
 
 ## Commands
