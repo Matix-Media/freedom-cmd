@@ -1,5 +1,5 @@
 # FREEDOM-Commander
-A tool to detect remote monitoring software and have more freedom on your workspace or PC.
+A tool that you can use to protect your privacy at work in the office or at school.
 
 ## Commands
     check_for_observers

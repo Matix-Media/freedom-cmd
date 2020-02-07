@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/.gitignore
+.idea/dictionaries
+.idea/freedom-cmd.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+venv/
