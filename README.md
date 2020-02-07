@@ -9,4 +9,4 @@ A tool that you can use to protect your privacy at work in the office or at scho
 + `help` Lists all helpful commands.
 
 ## Feedback & improvement
-If you want to help append processes to the list or even want to impreove the whole project, just write a issue or a comment.
+If you want to help append processes to the list or even want to improve the whole project, just write an issue or a comment.
