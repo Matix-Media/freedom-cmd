@@ -21,6 +21,7 @@
   },
   "observers": [
     "veyon_worker.exe",
+    "veyon-wroker.exe",
     "iTalc.exe",
     "amsys32.exe",
     "teamviewer.exe",
